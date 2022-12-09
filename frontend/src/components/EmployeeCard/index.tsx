@@ -3,6 +3,7 @@ import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css"
 
 import './styles.css'
+import ViewButton from "../ViewButton";
 
 function EmployeeCard() {
 
@@ -57,7 +58,7 @@ function EmployeeCard() {
                     <td className="show992">Adminstrativo</td>
                     <td>
                     <div className="dsmeta-red-btn-container">
-                        {/* <NotificationButton saleId={sale.id} /> */}
+                        <ViewButton />
                     </div>
                     </td>
                 </tr>  
@@ -69,7 +70,7 @@ function EmployeeCard() {
                     <td className="show992">Adminstrativo</td>
                     <td>
                     <div className="dsmeta-red-btn-container">
-                        {/* <NotificationButton saleId={sale.id} /> */}
+                        <ViewButton />
                     </div>
                     </td>
                 </tr>  
@@ -81,7 +82,7 @@ function EmployeeCard() {
                     <td className="show992">Adminstrativo</td>
                     <td>
                     <div className="dsmeta-red-btn-container">
-                        {/* <NotificationButton saleId={sale.id} /> */}
+                        <ViewButton />
                     </div>
                     </td>
                 </tr>  
