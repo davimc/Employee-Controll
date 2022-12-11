@@ -1,13 +1,13 @@
 import Header from './components/Header'
 import './App.css'
-import EmployeeCard from './components/EmployeeCard'
+import LicenseCard from './components/LicenseCard'
 
 function App() {
 
   return (
     <div className="App">
       <Header/>
-      <EmployeeCard/>
+      <LicenseCard/>
     </div>
   )
 }
