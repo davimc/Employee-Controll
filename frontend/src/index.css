@@ -1,5 +1,11 @@
 :root {
+    /* main */
     --main-bg-color: #000;
     --main-tx-color: #ebebeb;
-    --header-color: #3e5683;
+    --main-header-color: #3e5683;
+    /* btn */
+    --bg-btn-color: #ff6b721a;
+    /* components */
+    --header-txt-color: #676fff;
+
 }

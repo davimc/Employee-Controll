@@ -4,7 +4,7 @@
     padding: 30px 10px;
 }
   
-.emplocontrol-sales-title {
+.emplocontrol-licenses-title {
     color: #676fff;
     font-size: 24px;
     margin-bottom: 20px;
@@ -26,36 +26,36 @@
     font-size: 18px;
 }
 
-.emplocontrol-sales-table {
+.emplocontrol-licenses-table {
     width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
 }
 
-.emplocontrol-sales-table thead {
+.emplocontrol-licenses-table thead {
     height: 55px;
     font-size: 16px;
     color: #e9e9e9;
     font-weight: 700;
 }
 
-.emplocontrol-sales-table tbody {
+.emplocontrol-licenses-table tbody {
     font-size: 14px;
     font-weight: 400;
     color: #cfcfcf;
     text-align: center;
 }
 
-.emplocontrol-sales-table tbody tr {
+.emplocontrol-licenses-table tbody tr {
     height: 74px;
     border-top: 1px solid #5f6e82;
 }
 
-.emplocontrol-sales-table tbody tr:hover > td {
+.emplocontrol-licenses-table tbody tr:hover > td {
     background-color: #384459;
 }
 
-.emplocontrol-sales-table tbody tr:nth-child(odd) {
+.emplocontrol-licenses-table tbody tr:nth-child(odd) {
     background-color: #242c3b;
 }
 
@@ -82,11 +82,11 @@
         padding: 35px;
     }
 
-    .emplocontrol-sales-table tbody tr {
+    .emplocontrol-licenses-table tbody tr {
         height: 55px;
     }
 
-    .emplocontrol-sales-table tbody {
+    .emplocontrol-licenses-table tbody {
         font-size: 18px;
     }
 }

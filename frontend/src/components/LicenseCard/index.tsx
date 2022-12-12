@@ -27,7 +27,7 @@ function EmployeeCard() {
 
     return (
         <div className="emplocontrol-card">
-        <h2 className="emplocontrol-sales-title">Funcionários</h2>
+        <h2 className="emplocontrol-licenses-title">Funcionários</h2>
         <div>
         <div className="emplocontrol-form-control-container">
         <DatePicker
@@ -48,7 +48,7 @@ function EmployeeCard() {
         </div>
 
         <div>
-        <table className="emplocontrol-sales-table">
+        <table className="emplocontrol-licenses-table">
             <thead>
             <tr>
                 <th className="show992">ID</th>

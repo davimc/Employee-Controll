@@ -6,8 +6,8 @@ type Props = {
 function ViewButton() {
   
     return (
-      <div className='dsmeta-red-btn'>
-        <img src={icon} alt="Notificar"/>
+      <div className='emplocontrol-red-btn'>
+        <img src={icon} alt="Visualizar"/>
       </div>
     )
   }
