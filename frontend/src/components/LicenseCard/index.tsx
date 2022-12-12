@@ -54,8 +54,8 @@ function EmployeeCard() {
                 <th className="show992">ID</th>
                 <th>Funcionário</th>
                 <th className="show576">Data Início</th>
-                <th className="show576">Data Fim</th>
-                <th className="show992">Ativo</th>
+                <th className="show992">Data Fim</th>
+                <th className="show576">Ativo</th>
                 <th>Visualizar</th>
             </tr>
             </thead>
@@ -69,7 +69,7 @@ function EmployeeCard() {
                             <td className="show992">{new Date(license.dtEnd == null? 
                                 license.dtExpected : 
                                 license.dtEnd).toLocaleDateString()}</td>
-                            <td className="show992">{license.dtEnd == null ? "Ativo":"Concluído"}</td>
+                            <td className="show576">{license.dtEnd == null ? "Ativo":"Concluído"}</td>
                             <td>
                                 <div className="emplocontrol-red-btn-container">
                                         <ViewButton />

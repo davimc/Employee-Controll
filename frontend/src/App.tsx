@@ -1,13 +1,13 @@
 import Header from './components/Header'
 import './App.css'
-import LicenseCard from './components/LicenseCard'
+import CardViewer from './components/CardViewer'
 
 function App() {
 
   return (
     <div className="App">
       <Header/>
-      <LicenseCard/>
+      <CardViewer />
     </div>
   )
 }
