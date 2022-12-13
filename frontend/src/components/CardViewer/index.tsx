@@ -5,10 +5,10 @@ import './styles.css'
 
 function CardViewer() {
     return(
-        <>
+        <div className="cardviewer">
             <LicenseCard />
             <CardNav/>
-        </>
+        </div>
     )
 }
 

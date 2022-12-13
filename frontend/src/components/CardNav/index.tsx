@@ -12,12 +12,11 @@ icons.set('license', [<TbLicense/>, 'Licenças','#'])
 icons.set('exchange', [<RiExchangeLine/>, 'Trocas','#'])
 icons.set('request', [<FaRegHandshake/>, 'Pedidos','#'])
 
-const [classActive, setClassActive] = useState('store');
 
 
 function CardNav() {
-    
-        
+
+    const [classActive, setClassActive] = useState('store');        
     return(
         <div className="navigation">
         <ul>
@@ -25,7 +24,7 @@ function CardNav() {
                 return(
                 <li className={classActive == key? 'list active': 'list'} id={key} key = {key}>
                     <a href={val[2]} >
-                        <span className="icon" onClick={() =>setClassActive(key)}>
+                        <span className="icon" onClick={() => setClassActive(key)}>
                             {val[0]}
                         </span>
                         <span className="text">{val[1]}</span>
