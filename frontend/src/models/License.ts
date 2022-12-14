@@ -1,5 +1,3 @@
-import { CreateAxiosDefaults } from "axios"
-
 export type License = {
     id: number,
     employeeId: number,
