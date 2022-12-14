@@ -1,7 +1,9 @@
 .cardviewer {
-    width: 100%;
+    height: auto;
+}
+.cardnav {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items:  center;
-    flex-grow: 1;
+    align-items: flex-end;
+    justify-content: center;
 }

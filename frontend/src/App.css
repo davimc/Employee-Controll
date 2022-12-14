@@ -22,12 +22,10 @@ a:visited {
   text-decoration: none;
 }
 
-.dsmeta-container {
+.emplocontrol-container {
   width: 100%;
   max-width: 900px;
+  height: 100%;
   margin: 0 auto;
 }
 
-#sales {
-  padding: 40px 10px;
-}

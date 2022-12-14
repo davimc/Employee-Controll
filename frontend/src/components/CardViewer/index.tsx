@@ -1,4 +1,4 @@
-import LicenseCard from './../LicenseCard'
+import LicenseCard from '../elements/LicenseCard'
 import CardNav from './../CardNav'
 
 import './styles.css'
@@ -6,8 +6,10 @@ import './styles.css'
 function CardViewer() {
     return(
         <div className="cardviewer">
-            <LicenseCard />
-            <CardNav/>
+            <LicenseCard/>
+            <div className='cardnav'> 
+                <CardNav />
+            </div>
         </div>
     )
 }

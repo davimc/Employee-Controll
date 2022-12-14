@@ -22,9 +22,9 @@ function CardNav() {
         <ul>
             {Array.from(icons).map(([key,val]) => {
                 return(
-                <li className={classActive == key? 'list active': 'list'} id={key} key = {key}>
+                <li className={classActive == key? 'list active': 'list'} id={key} key = {key} onClick={() => setClassActive(key)}>
                     <a href={val[2]} >
-                        <span className="icon" onClick={() => setClassActive(key)}>
+                        <span className="icon" >
                             {val[0]}
                         </span>
                         <span className="text">{val[1]}</span>

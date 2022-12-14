@@ -7,7 +7,9 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <CardViewer />
+      <div className=' emplocontrol-container'>
+        <CardViewer/>
+      </div>
     </div>
   )
 }
