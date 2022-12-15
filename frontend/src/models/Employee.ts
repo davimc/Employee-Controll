@@ -1,4 +1,4 @@
-export type License = {
+export type Employee = {
     id: number,
     name: string,
     store: string,

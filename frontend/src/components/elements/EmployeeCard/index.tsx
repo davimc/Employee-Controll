@@ -5,10 +5,11 @@ import ViewButton from "../../ViewButton";
 import { BASE_URL } from "../../../utils/request";
 
 import './styles.css'
+import { Employee } from '../../../models/Employee';
 
 function EmployeeCard() {
 
-
+    const [actives, setActives] = useState<boolean>(true)
     const [employees, setEmployees] = useState<Employee[]>([])
 
     useEffect(() => {
@@ -26,8 +27,8 @@ function EmployeeCard() {
         <form action="" method='get'>
             <label htmlFor="get-employee">Nome ou CPF</label>
             <input type="text" id='get-employee'/>
-            <label htmlFor="get-active-employee"></label>
-            <input type="checkbox" id='get-active-employee' checked/>
+            <label htmlFor="get-active-employee">Ativos</label>
+            <input type="checkbox" id='get-active-employee'  checked={actives} onChange={()=>setActives(!actives)}/>
         </form>
         </div>
         <div className="emplocontrol-form-control-container">
