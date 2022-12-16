@@ -18,16 +18,16 @@ function LicenseCard() {
 
     const [licenses, setLicenses] = useState<License[]>([])
 
-    useEffect(() => {
-        const dMin = minDate.toISOString().slice(0,10)
-        const dMax = maxDate.toISOString().slice(0,10)
-        axios.get(`${BASE_URL}/licenses?dtMin=${dMin}&dtMax=${dMax}`)
-            .then(response => {(setLicenses(response.data.content))})
-    }), [minDate, maxDate]
+    // useEffect(() => {
+    //     const dMin = minDate.toISOString().slice(0,10)
+    //     const dMax = maxDate.toISOString().slice(0,10)
+    //     axios.get(`${BASE_URL}/licenses?dtMin=${dMin}&dtMax=${dMax}`)
+    //         .then(response => {(setLicenses(response.data.content))})
+    // }), [minDate, maxDate]
 
     return (
         <div className="emplocontrol-card">
-        <h2 className="emplocontrol-licenses-title">Funcionários</h2>
+        <h2 className="emplocontrol-licenses-title">Licenças</h2>
         <div>
         <div className="emplocontrol-form-control-container">
         <DatePicker

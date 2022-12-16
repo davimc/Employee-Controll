@@ -5,32 +5,27 @@ import ViewButton from "../../ViewButton";
 import { BASE_URL } from "../../../utils/request";
 
 import './styles.css'
-import { Employee } from '../../../models/Employee';
+import { Store } from '../../../models/Store';
 
-function EmployeeCard() {
+function StoreCard() {
 
-    const [actives, setActives] = useState<boolean>(true)
-    const [employees, setEmployees] = useState<Employee[]>([])
+    const [employees, setEmployees] = useState<Store[]>([])
 
-    useEffect(() => {
+    // useEffect(() => {
         // const dMin = minDate.toISOString().slice(0,10)
         // const dMax = maxDate.toISOString().slice(0,10)
         // axios.get(`${BASE_URL}/licenses?dtMin=${dMin}&dtMax=${dMax}`)
         //     .then(response => {(setLicenses(response.data.content))})
-    })
+    // })
 
     return (
         <div className="emplocontrol-card">
-        <h2 className="emplocontrol-licenses-title">Funcionários</h2>
+            
+        <h2 className="emplocontrol-licenses-title">Lojas</h2>
         <div>
-        <div className="emplocontrol-form-control-container">
-            <input type="text" id='get-employee' className='emplocontrol-form-control' placeholder='Nome ou CPF'/>
-        </div>
-        <div className="emplocontrol-form-control-container">
-        <label htmlFor="get-active-employee">Ativos</label>
-        <input type="checkbox" id='get-active-employee'  checked={actives} onChange={()=>setActives(!actives)}/>
-
-        </div>
+            <div className="emplocontrol-form-control-container">
+                <input type="text" id='get-store' className='emplocontrol-form-control' placeholder='Nome'/>
+            </div>
         </div>
 
         <div>
@@ -38,10 +33,10 @@ function EmployeeCard() {
             <thead>
             <tr>
                 <th className="show992">ID</th>
-                <th>Funcionário</th>
-                <th className="show576">CPF</th>
-                <th className="show992">Loja</th>
-                <th className="show576">Ativo</th>
+                <th>Loja</th>
+                <th className="show576">Qtd Atual</th>
+                <th className="show992">Qtd Original</th>
+                
                 <th>Visualizar</th>
             </tr>
             </thead>
@@ -71,4 +66,4 @@ function EmployeeCard() {
     )
 }
 
-export default EmployeeCard
+export default StoreCard

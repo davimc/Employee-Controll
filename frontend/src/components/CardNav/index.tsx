@@ -7,11 +7,11 @@ import './styles.css'
 const i = [<HiOutlineBuildingStorefront/>,'Lojas']
 const icons = new Map<string, [any,any,any]>()
     
-icons.set('store', [<HiOutlineBuildingStorefront/>,'Lojas','#'])
+icons.set('store', [<HiOutlineBuildingStorefront/>,'Lojas','stores'])
 icons.set('employee', [<BsPerson/>, 'Funcionários','employees'])
 icons.set('license', [<TbLicense/>, 'Licenças','licenses'])
-icons.set('exchange', [<RiExchangeLine/>, 'Trocas','#'])
-icons.set('request', [<FaRegHandshake/>, 'Pedidos','#'])
+icons.set('exchange', [<RiExchangeLine/>, 'Trocas','exchanges'])
+icons.set('request', [<FaRegHandshake/>, 'Pedidos','requests'])
 
 
 
