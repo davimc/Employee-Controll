@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css"
 import ViewButton from "../../ViewButton";
 import { BASE_URL } from "../../../utils/request";
 import { License } from "../../../models/License";
+import Head from '../ElementsHead'
+import Table from '../ElementsTable'
 
 import './styles.css'
 
@@ -17,6 +19,13 @@ function LicenseCard() {
     const [maxDate, setMaxDate] = useState(max) 
 
     const [licenses, setLicenses] = useState<License[]>([])
+    const tbHead = new Map<string, number> ([
+        ['ID',2],
+        ['Funcionário', 0],
+        ['Data Início',1],
+        ['Data Fim', 2],
+        ['Ativo',1]
+    ])
 
     // useEffect(() => {
     //     const dMin = minDate.toISOString().slice(0,10)
@@ -26,9 +35,8 @@ function LicenseCard() {
     // }), [minDate, maxDate]
 
     return (
-        <div className="emplocontrol-card">
-        <h2 className="emplocontrol-licenses-title">Licenças</h2>
-        <div>
+        <>
+        <Head title='Licenças'>
         <div className="emplocontrol-form-control-container">
         <DatePicker
             selected={minDate}
@@ -45,21 +53,7 @@ function LicenseCard() {
             dateFormat="dd/MM/yyyy"
 />
         </div>
-        </div>
-
-        <div>
-        <table className="emplocontrol-licenses-table">
-            <thead>
-            <tr>
-                <th className="show992">ID</th>
-                <th>Funcionário</th>
-                <th className="show576">Data Início</th>
-                <th className="show992">Data Fim</th>
-                <th className="show576">Ativo</th>
-                <th>Visualizar</th>
-            </tr>
-            </thead>
-            <tbody>
+        <Table tbHead={tbHead}>        
                 {licenses.map(license => {
                     return(
                         <tr key={license.id}>
@@ -78,12 +72,9 @@ function LicenseCard() {
                         </tr>  
                 )
                 })}
-            </tbody>
-
-        </table>
-        </div>
-
-    </div>
+        </Table>
+    </Head>
+    </>
     )
 }
 
