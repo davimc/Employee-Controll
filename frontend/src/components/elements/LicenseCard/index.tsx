@@ -12,18 +12,18 @@ function LicenseCard() {
 
     const min = new Date(new Date().setDate(new Date().getDate() - 365))
     const max = new Date()
-
+                                                                                                            
     const [minDate, setMinDate] = useState(min)
     const [maxDate, setMaxDate] = useState(max) 
 
     const [licenses, setLicenses] = useState<License[]>([])
 
-    // useEffect(() => {
-    //     const dMin = minDate.toISOString().slice(0,10)
-    //     const dMax = maxDate.toISOString().slice(0,10)
-    //     axios.get(`${BASE_URL}/licenses?dtMin=${dMin}&dtMax=${dMax}`)
-    //         .then(response => {(setLicenses(response.data.content))})
-    // }), [minDate, maxDate]
+    useEffect(() => {
+        const dMin = minDate.toISOString().slice(0,10)
+        const dMax = maxDate.toISOString().slice(0,10)
+        axios.get(`${BASE_URL}/licenses?dtMin=${dMin}&dtMax=${dMax}`)
+            .then(response => {(setLicenses(response.data.content))})
+    }), [minDate, maxDate]
 
     return (
         <div className="emplocontrol-card">

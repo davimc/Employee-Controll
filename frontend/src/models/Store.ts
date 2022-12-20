@@ -1,6 +1,11 @@
 export type Store = {
     id: number,
     name: string,
-    qtdEmployee: number,
-    qtdEmployeeBeloging: number
+    type:string,
+    qttCurrent: number,
+    qttBeloging: number
+}
+export type StoreType = { 
+    cod: number,
+    name: string
 }
