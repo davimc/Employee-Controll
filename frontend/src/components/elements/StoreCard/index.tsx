@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ViewButton from "../../ViewButton";
 import { BASE_URL } from "../../../utils/request";
 
@@ -10,19 +10,20 @@ import Select from 'react-select'
 function StoreCard() {
 
     const [stores, setStores] = useState<Store[]>([])
-    const [type, setType] = useState(-1)
+    const [type, setType] = useState(0)
     const [name, setName] = useState('');
     const options = [
-        {value: -1, label: 'Todos'},
-        {value: 0, label: 'Subway'},
-        {value: 1, label: 'Cafeteria'},
-        {value: 2, label: 'Restaurante'}
+        {value: 0, label: 'Todos'},
+        {value: 1, label: 'Subway'},
+        {value: 2, label: 'Cafeteria'},
+        {value: 3, label: 'Restaurante'}
     ]
 
     useEffect(() => {
         axios.get(`${BASE_URL}/stores?name=${name}&type=${type}`)
-            .then(response => {(setStores(response.data))})
-    }), []
+        .then(response => {(setStores(response.data))})
+        
+    }, [name, type])
 
     return (
         <div className="emplocontrol-card">
@@ -37,7 +38,8 @@ function StoreCard() {
                         options={options} 
                         defaultValue={options[0]}
                         className='emplocontrol-form-control' 
-                        />
+                        onChange={(e) => setType(e!.value)}
+                    />
                 
             </div>
 
