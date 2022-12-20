@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css"
 import ViewButton from "../../ViewButton";
 import { BASE_URL } from "../../../utils/request";
 import { Exchange } from "../../../models/Exchange";
+import Head from '../ElementsHead'
+import Table from '../ElementsTable'
 
 import './styles.css'
 
@@ -19,6 +21,14 @@ function ExchangeCard() {
     const [maxDate, setMaxDate] = useState(max) 
 
     const [exchanges, setExchanges] = useState<Exchange[]>([])
+    
+    const tbHead = new Map<string, number> ([
+        ['ID',2],
+        ['Funcionário', 0],
+        ['Data Início',1],
+        ['Data Fim', 2],
+        ['Ativo',1]
+    ])
 
     // useEffect(() => {
     //     const dMin = minDate.toISOString().slice(0,10)
@@ -28,8 +38,8 @@ function ExchangeCard() {
     // }), [minDate, maxDate]
 
     return (
-        <div className="emplocontrol-card">
-        <h2 className="emplocontrol-licenses-title">Trocas</h2>
+        <>
+        <Head title='Trocas'>
         <div className='row-container'>
             <div className='col-container'>
                 <div className="emplocontrol-form-control-container">
@@ -69,19 +79,7 @@ function ExchangeCard() {
                 </div>
                 
             </div>
-        <div>
-        <table className="emplocontrol-licenses-table">
-            <thead>
-            <tr>
-                <th className="show992">ID</th>
-                <th>Funcionário</th>
-                <th className="show576">Data Início</th>
-                <th className="show992">Data Fim</th>
-                <th className="show576">Ativo</th>
-                <th>Visualizar</th>
-            </tr>
-            </thead>
-            <tbody>
+        <Table tbHead={tbHead}>
                 {exchanges.map(exchange => {
                     return(
                         <tr key={exchange.id}>
@@ -100,12 +98,10 @@ function ExchangeCard() {
                         </tr>  
                 )
                 })}
-            </tbody>
 
-        </table>
-        </div>
-
-    </div>
+        </Table>
+        </Head>
+        </>
     )
 }
 

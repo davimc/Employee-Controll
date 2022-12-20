@@ -1,73 +1,62 @@
 import axios from 'axios'
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import "react-datepicker/dist/react-datepicker.css"
-import ViewButton from "../../ViewButton";
-import { BASE_URL } from "../../../utils/request";
+import ViewButton from "../../ViewButton"
+import { BASE_URL } from "../../../utils/request"
 
 import './styles.css'
-import { Employee } from '../../../models/Employee';
+import { Employee } from '../../../models/Employee'
+import Table from '../ElementsTable'
+import Head from '../ElementsHead'
 
 function EmployeeCard() {
 
     const [actives, setActives] = useState<boolean>(true)
     const [employees, setEmployees] = useState<Employee[]>([])
+    const tbHead = new Map<string, number>([
+        ['ID', 2],
+        ['Funcionário',0],
+        ['CPF',2],
+        ['Loja',1],
+        ['Ativo',1]
+    ])
 
     useEffect(() => {
-        // const dMin = minDate.toISOString().slice(0,10)
-        // const dMax = maxDate.toISOString().slice(0,10)
-        // axios.get(`${BASE_URL}/licenses?dtMin=${dMin}&dtMax=${dMax}`)
-        //     .then(response => {(setLicenses(response.data.content))})
-    })
+         axios.get(`${BASE_URL}/employees`)
+             .then(response => {(setEmployees(response.data.content))})
+    }),[]
 
     return (
-        <div className="emplocontrol-card">
-        <h2 className="emplocontrol-licenses-title">Funcionários</h2>
-        <div>
+        <>
+        <Head title='Funcionários'>
         <div className="emplocontrol-form-control-container">
-            <input type="text" id='get-employee' className='emplocontrol-form-control' placeholder='Nome ou CPF'/>
+            <input type="text" className='emplocontrol-form-control' placeholder='Nome ou CPF'/>
         </div>
         <div className="emplocontrol-form-control-container">
         <label htmlFor="get-active-employee">Ativos</label>
         <input type="checkbox" id='get-active-employee'  checked={actives} onChange={()=>setActives(!actives)}/>
 
         </div>
-        </div>
+        <Table tbHead={tbHead}>
 
-        <div>
-        <table className="emplocontrol-licenses-table">
-            <thead>
-            <tr>
-                <th className="show992">ID</th>
-                <th>Funcionário</th>
-                <th className="show576">CPF</th>
-                <th className="show992">Loja</th>
-                <th className="show576">Ativo</th>
-                <th>Visualizar</th>
-            </tr>
-            </thead>
-            <tbody>
-                {employees.map(employee => {
-                    return(
-                        <tr key={employee.id}>
-                            <td className="show992">{employee.id}</td>
-                            <td>{employee.name}</td>
-                            <td className="show576">{employee.cpf}</td>
-                            <td className="show992">{employee.store}</td>
-                            <td className="show576">{employee.dtResignation == null ? "Ativo":"Desligado"}</td>
-                            <td>
-                                <div className="emplocontrol-red-btn-container">
-                                        <ViewButton />
-                                </div>
-                            </td>
-                        </tr>  
-                )
-                })}
-            </tbody>
-
-        </table>
-        </div>
-
-    </div>
+        {employees.map(employee => {
+            return(
+                <tr key={employee.id}>
+                    <td className="show992">{employee.id}</td>
+                    <td>{employee.name}</td>
+                    <td className="show576">{employee.cpf}</td>
+                    <td className="show992">{employee.store}</td>
+                    <td className="show576">{employee.dtResignation == null ? "Ativo":"Desligado"}</td>
+                    <td>
+                        <div className="emplocontrol-red-btn-container">
+                            <ViewButton />
+                     </div>
+                    </td>
+                </tr>  
+            )})}
+        </Table>
+        </Head>
+        </>
     )
 }
 
