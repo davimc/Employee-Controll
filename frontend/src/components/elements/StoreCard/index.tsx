@@ -1,11 +1,13 @@
 import axios from 'axios'
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ViewButton from "../../ViewButton";
 import { BASE_URL } from "../../../utils/request";
-
-import './styles.css'
 import { Store } from '../../../models/Store';
 import Select from 'react-select'
+import Head from '../ElementsHead'
+import Table from '../ElementsTable'
+
+import './styles.css'
 
 function StoreCard() {
 
@@ -18,6 +20,13 @@ function StoreCard() {
         {value: 2, label: 'Cafeteria'},
         {value: 3, label: 'Restaurante'}
     ]
+    const tbHead = new Map<string, number>([
+        ['ID', 2],
+        ['Loja',0],
+        ['Tipo',2],
+        ['Qtd Funcionários',1],
+        ['Qtd Original',1]
+    ])
 
     useEffect(() => {
         axios.get(`${BASE_URL}/stores?name=${name}&type=${type}`)
@@ -26,14 +35,13 @@ function StoreCard() {
     }, [name, type])
 
     return (
-        <div className="emplocontrol-card">
-            
-        <h2 className="emplocontrol-licenses-title">Lojas</h2>
+        <Head title='Lojas'>
         <div>
             <div className="emplocontrol-form-control-container">
                 <input type="text" value={name} className='emplocontrol-form-control' placeholder='Nome' onChange={(e) => setName(e.target.value)}/>
             </div>
             <div className="emplocontrol-form-control-container">
+                {/* TODO consertar o css desse Select */}
                     <Select 
                         options={options} 
                         defaultValue={options[0]}
@@ -45,42 +53,24 @@ function StoreCard() {
 
         </div>
 
-        <div>
-        <table className="emplocontrol-licenses-table">
-            <thead>
-            <tr>
-                <th className="show992">ID</th>
-                <th>Loja</th>
-                <th className="show576">Tipo</th>            
-                <th className="show576">Qtd Atual</th>
-                <th className="show992">Qtd Original</th>
-                
-                <th>Visualizar</th>
-            </tr>
-            </thead>
-            <tbody>
-                {stores.map(store => {
-                    return(
-                        <tr key={store.id}>
-                            <td className="show992">{store.id}</td>
-                            <td>{store.name}</td>
-                            <td className="show576">{store.type}</td>
-                            <td className="show992">{store.qttCurrent}</td>
-                            <td className="show576">{store.qttBeloging}</td>
-                            <td>
-                                <div className="emplocontrol-red-btn-container">
-                                        <ViewButton />
-                                </div>
-                            </td>
-                        </tr>  
-                )
-                })}
-            </tbody>
-
-        </table>
-        </div>
-
-    </div>
+        <Table tbHead={tbHead}>
+            {stores.map(store => {
+                return(
+                    <tr key={store.id}>
+                        <td className="show992">{store.id}</td>
+                        <td>{store.name}</td>
+                        <td className="show576">{store.type}</td>
+                        <td className="show992">{store.qttCurrent}</td>
+                        <td className="show576">{store.qttBeloging}</td>
+                        <td>
+                            <div className="emplocontrol-red-btn-container">
+                                <ViewButton />
+                            </div>
+                        </td>
+                    </tr>  
+                )})}
+            </Table>
+        </Head>
     )
 }
 

@@ -1,7 +1,7 @@
 .emplocontrol-table {
-    color: var(--header-txt-color);
-    font-size: 24px;
-    margin-bottom: 20px;
+    width: 100%;
+    border-spacing: 0 20px;
+    font-size: 18px;
 }
 
 .emplocontrol-table thead {

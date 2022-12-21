@@ -27,36 +27,34 @@ function EmployeeCard() {
     }),[]
 
     return (
-        <>
         <Head title='Funcionários'>
-        <div className="emplocontrol-form-control-container">
-            <input type="text" className='emplocontrol-form-control' placeholder='Nome ou CPF'/>
-        </div>
-        <div className="emplocontrol-form-control-container">
-        <label htmlFor="get-active-employee">Ativos</label>
-        <input type="checkbox" id='get-active-employee'  checked={actives} onChange={()=>setActives(!actives)}/>
+            <div className="emplocontrol-form-control-container">
+                <input type="text" className='emplocontrol-form-control' placeholder='Nome ou CPF'/>
+            </div>
+            <div className="emplocontrol-form-control-container">
+            <label htmlFor="get-active-employee">Ativos</label>
+            <input type="checkbox" id='get-active-employee'  checked={actives} onChange={()=>setActives(!actives)}/>
 
-        </div>
-        <Table tbHead={tbHead}>
+            </div>
+            <Table tbHead={tbHead}>
 
-        {employees.map(employee => {
-            return(
-                <tr key={employee.id}>
-                    <td className="show992">{employee.id}</td>
-                    <td>{employee.name}</td>
-                    <td className="show576">{employee.cpf}</td>
-                    <td className="show992">{employee.store}</td>
-                    <td className="show576">{employee.dtResignation == null ? "Ativo":"Desligado"}</td>
-                    <td>
-                        <div className="emplocontrol-red-btn-container">
-                            <ViewButton />
-                     </div>
-                    </td>
-                </tr>  
-            )})}
-        </Table>
+            {employees.map(employee => {
+                return(
+                    <tr key={employee.id}>
+                        <td className="show992">{employee.id}</td>
+                        <td>{employee.name}</td>
+                        <td className="show576">{employee.cpf}</td>
+                        <td className="show992">{employee.store}</td>
+                        <td className="show576">{employee.dtResignation == null ? "Ativo":"Desligado"}</td>
+                        <td>
+                            <div className="emplocontrol-red-btn-container">
+                                <ViewButton />
+                        </div>
+                        </td>
+                    </tr>  
+                )})}
+            </Table>
         </Head>
-        </>
     )
 }
 
