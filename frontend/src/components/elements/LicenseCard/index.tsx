@@ -8,7 +8,7 @@ import { License } from "../../../models/License";
 import Head from '../ElementsHead'
 import Table from '../ElementsTable'
 
-import './styles.css'
+import '../elementsGlobalStyles.css'
 
 function LicenseCard() {
 
@@ -35,25 +35,27 @@ function LicenseCard() {
     }), [minDate, maxDate]
 
     return (
-        <>
+        
         <Head title='Licenças'>
-        <div className="emplocontrol-form-control-container">
-        <DatePicker
-            selected={minDate}
-            onChange={(date: Date) => {setMinDate(date)}}
-            className="emplocontrol-form-control"
-            dateFormat="dd/MM/yyyy"
-/>
-        </div>
-        <div className="emplocontrol-form-control-container">
-        <DatePicker
-            selected={maxDate}
-            onChange={(date: Date) => {setMaxDate(date)}}
-            className="emplocontrol-form-control"
-            dateFormat="dd/MM/yyyy"
-/>
-        </div>
-        <Table tbHead={tbHead}>        
+            <div className='col-container'>
+                <div className="emplocontrol-form-control-container">
+                <DatePicker
+                    selected={minDate}
+                    onChange={(date: Date) => {setMinDate(date)}}
+                    className="emplocontrol-form-control"
+                    dateFormat="dd/MM/yyyy"
+        />
+                </div>
+                <div className="emplocontrol-form-control-container">
+                <DatePicker
+                    selected={maxDate}
+                    onChange={(date: Date) => {setMaxDate(date)}}
+                    className="emplocontrol-form-control"
+                    dateFormat="dd/MM/yyyy"
+        />
+                </div>
+            </div>
+            <Table tbHead={tbHead}>        
                 {licenses.map(license => {
                     return(
                         <tr key={license.id}>
@@ -66,15 +68,14 @@ function LicenseCard() {
                             <td className="show576">{license.dtEnd == null ? "Ativo":"Concluído"}</td>
                             <td>
                                 <div className="emplocontrol-red-btn-container">
-                                        <ViewButton />
+                                    <ViewButton />
                                 </div>
                             </td>
                         </tr>  
-                )
-                })}
+            )
+            })}
         </Table>
     </Head>
-    </>
     )
 }
 

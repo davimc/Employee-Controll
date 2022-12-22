@@ -8,7 +8,7 @@ import { Exchange } from "../../../models/Exchange";
 import Head from '../ElementsHead'
 import Table from '../ElementsTable'
 
-import './styles.css'
+import '../elementsGlobalStyles.css'
 
 function ExchangeCard() {
 
