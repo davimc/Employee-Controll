@@ -1,4 +1,3 @@
-import { Children } from 'react'
 import './styles.css'
 
 interface tbComponents {
@@ -20,7 +19,7 @@ function Table(props:tbComponents) {
             <tr>
             {Array.from(props.tbHead).map(([key,priority]) => {
                 return(
-                    <th className={priorityList.get(priority)}>{key}</th>
+                    <th key={key} className={priorityList.get(priority)}>{key}</th>
                 )
             })}
                 <th className={priorityList.get(0)}>Visualizar</th>
