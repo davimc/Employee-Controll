@@ -8,3 +8,11 @@ export type Employee = {
     storeBelogingName: string,
     storeCurrentName: string
 }
+
+export type EmployeeShort = {
+    id: number,
+    name: string,
+    cpf: string,
+    store: string,
+    state: string
+}
