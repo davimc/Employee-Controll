@@ -34,38 +34,25 @@ function LicenseCard() {
             .then(response => {(setLicenses(response.data.content))})
     }), [minDate, maxDate]
 
-    return (
-<<<<<<< HEAD
-        <Head title='Licenças'>
-            <div>
-=======
-        
+    return ( 
         <Head title='Licenças'>
             <div className='col-container'>
->>>>>>> refs/remotes/origin/main
                 <div className="emplocontrol-form-control-container">
-                <DatePicker
-                    selected={minDate}
-                    onChange={(date: Date) => {setMinDate(date)}}
-                    className="emplocontrol-form-control"
-                    dateFormat="dd/MM/yyyy"
-<<<<<<< HEAD
-                />
-=======
-        />
->>>>>>> refs/remotes/origin/main
+                    <DatePicker
+                        selected={minDate}
+                        onChange={(date: Date) => {setMinDate(date)}}
+                        className="emplocontrol-form-control"
+                        dateFormat="dd/MM/yyyy"
+                    />
                 </div>
                 <div className="emplocontrol-form-control-container">
-                <DatePicker
-                    selected={maxDate}
-                    onChange={(date: Date) => {setMaxDate(date)}}
-                    className="emplocontrol-form-control"
-                    dateFormat="dd/MM/yyyy"
-<<<<<<< HEAD
-                />
-=======
-        />
->>>>>>> refs/remotes/origin/main
+                    <DatePicker
+                        selected={maxDate}
+                        onChange={(date: Date) => {setMaxDate(date)}}
+                        className="emplocontrol-form-control"
+                        dateFormat="dd/MM/yyyy"
+                    />
+
                 </div>
             </div>
             <Table tbHead={tbHead}>        
