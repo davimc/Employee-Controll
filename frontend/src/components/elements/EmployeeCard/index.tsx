@@ -28,6 +28,7 @@ function EmployeeCard() {
 
     return (
         <Head title='Funcionários'>
+            <div>
             <div className="emplocontrol-form-control-container">
                 <input type="text" className='emplocontrol-form-control' placeholder='Nome ou CPF'/>
             </div>
@@ -35,6 +36,7 @@ function EmployeeCard() {
             <label htmlFor="get-active-employee">Ativos</label>
             <input type="checkbox" id='get-active-employee'  checked={actives} onChange={()=>setActives(!actives)}/>
 
+            </div>
             </div>
             <Table tbHead={tbHead}>
 

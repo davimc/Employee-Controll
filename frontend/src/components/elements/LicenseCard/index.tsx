@@ -35,25 +35,26 @@ function LicenseCard() {
     }), [minDate, maxDate]
 
     return (
-        <>
         <Head title='Licenças'>
-        <div className="emplocontrol-form-control-container">
-        <DatePicker
-            selected={minDate}
-            onChange={(date: Date) => {setMinDate(date)}}
-            className="emplocontrol-form-control"
-            dateFormat="dd/MM/yyyy"
-/>
-        </div>
-        <div className="emplocontrol-form-control-container">
-        <DatePicker
-            selected={maxDate}
-            onChange={(date: Date) => {setMaxDate(date)}}
-            className="emplocontrol-form-control"
-            dateFormat="dd/MM/yyyy"
-/>
-        </div>
-        <Table tbHead={tbHead}>        
+            <div>
+                <div className="emplocontrol-form-control-container">
+                <DatePicker
+                    selected={minDate}
+                    onChange={(date: Date) => {setMinDate(date)}}
+                    className="emplocontrol-form-control"
+                    dateFormat="dd/MM/yyyy"
+                />
+                </div>
+                <div className="emplocontrol-form-control-container">
+                <DatePicker
+                    selected={maxDate}
+                    onChange={(date: Date) => {setMaxDate(date)}}
+                    className="emplocontrol-form-control"
+                    dateFormat="dd/MM/yyyy"
+                />
+                </div>
+            </div>
+            <Table tbHead={tbHead}>        
                 {licenses.map(license => {
                     return(
                         <tr key={license.id}>
@@ -74,7 +75,6 @@ function LicenseCard() {
                 })}
         </Table>
     </Head>
-    </>
     )
 }
 
