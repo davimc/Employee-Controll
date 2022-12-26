@@ -1,9 +1,11 @@
+import { EmployeeShort } from "./Employee"
+
 export type Request = {
     id: number,
-    employeeId: number,
-    employeeName: string,
-    created: Date,
+    employee: EmployeeShort,
+    createdAt: Date,
     dtStart: Date,
     dtExpected: Date,
-    dtEnd: Date
+    dtEnd: Date,
+    state: string
 }
