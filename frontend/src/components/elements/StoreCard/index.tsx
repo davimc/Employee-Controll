@@ -7,7 +7,7 @@ import Select from 'react-select'
 import Head from '../ElementsHead'
 import Table from '../ElementsTable'
 
-import './styles.css'
+import '../elementsGlobalStyles.css'
 
 function StoreCard() {
 
