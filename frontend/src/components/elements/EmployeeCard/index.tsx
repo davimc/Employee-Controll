@@ -29,14 +29,6 @@ function EmployeeCard() {
     return (
         <Head title='Funcionários'>
             <div>
-<<<<<<< HEAD
-            <div className="emplocontrol-form-control-container">
-                <input type="text" className='emplocontrol-form-control' placeholder='Nome ou CPF'/>
-            </div>
-            <div className="emplocontrol-form-control-container">
-            <label htmlFor="get-active-employee">Ativos</label>
-            <input type="checkbox" id='get-active-employee'  checked={actives} onChange={()=>setActives(!actives)}/>
-=======
                 <div className="emplocontrol-form-control-container">
                     <input type="text" className='emplocontrol-form-control' placeholder='Nome ou CPF' value={search} onChange={(e) => setSearch(e.target.value)}/>
                 </div>
@@ -44,10 +36,9 @@ function EmployeeCard() {
                 <div className="emplocontrol-form-control-container">
                 <label htmlFor="get-active-employee">Ativos</label>
                 <input type="checkbox" id='get-active-employee'  checked={actives} onChange={()=>setActives(!actives)}/>
->>>>>>> refs/remotes/origin/main
+
 
                 </div>
-            </div>
             </div>
             <Table tbHead={tbHead}>
 
