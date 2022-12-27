@@ -18,7 +18,7 @@ function RequestCard() {
     const [minDate, setMinDate] = useState(min)
     const [maxDate, setMaxDate] = useState(max) 
 
-    const [licenses, setLicenses] = useState<Request[]>([])
+    const [requests, setRequests] = useState<Request[]>([])
     const tbHead = new Map<string, number>([
         ['ID',2],
         ['Funcionário', 0],
@@ -27,12 +27,12 @@ function RequestCard() {
         ['Ativo',1]
     ])
 
-    // useEffect(() => {
-    //     const dMin = minDate.toISOString().slice(0,10)
-    //     const dMax = maxDate.toISOString().slice(0,10)
-    //     axios.get(`${BASE_URL}/licenses?dtMin=${dMin}&dtMax=${dMax}`)
-    //         .then(response => {(setLicenses(response.data.content))})
-    // }), [minDate, maxDate]
+    useEffect(() => {
+        const dMin = minDate.toISOString().slice(0,10)
+        const dMax = maxDate.toISOString().slice(0,10)
+        axios.get(`${BASE_URL}/requests}`)
+            .then(response => {(setRequests(response.data.content))})
+    }), [minDate, maxDate]
 
     return (
         <>
@@ -54,16 +54,16 @@ function RequestCard() {
 />
         </div>
         <Table tbHead={tbHead}>        
-                {licenses.map(license => {
+                {requests.map(request => {
                     return(
-                        <tr key={license.id}>
-                            <td className="show992">{license.id}</td>
-                            <td>{license.employeeName}</td>
-                            <td className="show576">{new Date(license.dtStart).toLocaleDateString()}</td>
-                            <td className="show992">{new Date(license.dtEnd == null? 
-                                license.dtExpected : 
-                                license.dtEnd).toLocaleDateString()}</td>
-                            <td className="show576">{license.dtEnd == null ? "Ativo":"Concluído"}</td>
+                        <tr key={request.id}>
+                            <td className="show992">{request.id}</td>
+                            <td>{request.employeeName}</td>
+                            <td className="show576">{new Date(request.dtStart).toLocaleDateString()}</td>
+                            <td className="show992">{new Date(request.dtEnd == null? 
+                                request.dtExpected : 
+                                request.dtEnd).toLocaleDateString()}</td>
+                            <td className="show576">{request.dtEnd == null ? "Ativo":"Concluído"}</td>
                             <td>
                                 <div className="emplocontrol-red-btn-container">
                                         <ViewButton />
