@@ -1,0 +1,13 @@
+.select {
+
+}
+
+.col-container {
+    display: flex;
+    flex-direction: column;
+}
+.row-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}

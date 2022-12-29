@@ -1,0 +1,9 @@
+.cardviewer {
+    height: auto;
+}
+.cardviewer .cardnav {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}

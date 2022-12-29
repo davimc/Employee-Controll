@@ -1,0 +1,112 @@
+.navigation{
+    position: relative;
+    width: 400px;
+    height: 70px;
+    background: var(--nav-card-nav);
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navigation ul {
+    display:flex;
+    width: 330px;
+    list-style: none;
+}
+.navigation ul .list {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+}
+
+.navigation ul .list:nth-child(1).active ~ .indicator{
+    transform: translateX(calc(65px * 0))
+}
+.navigation ul .list:nth-child(2).active ~ .indicator{
+    transform: translateX(calc(65px * 1))
+}
+.navigation ul .list:nth-child(3).active ~ .indicator{
+    transform: translateX(calc(65px * 2))
+}
+.navigation ul .list:nth-child(4).active ~ .indicator{
+    transform: translateX(calc(65px * 3))
+}
+.navigation ul .list:nth-child(5).active ~ .indicator{
+    transform: translateX(calc(65.5px * 4))
+}
+.navigation ul .list a{
+    position:relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width:100%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+}
+.navigation ul .list a .icon {
+    position: relative;
+    display: block;
+    line-height: 75px;
+    font-size: 1.5em;
+    color: var(--nav-card-clr);
+    text-align: center;
+    transition: 0.5s;
+}
+.navigation ul .list.active a .icon {
+    transform: translatey(-35px);
+}
+.navigation ul .list a .text {
+    position: absolute;
+    color: var(--nav-card-clr);
+    font-weight: 400;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+.navigation ul .list.active a .text {
+    opacity: 1;
+    transform: translateY(10px);
+
+}
+
+.indicator {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: var(--nav-card-nav);
+    border-radius: 50%;
+    top: -50%;
+    border: 6px solid var(--nav-card-bg);
+    transition: 0.5s;
+}
+
+.indicator::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: -22px;
+    top: 50%;
+    border-top-right-radius: 20px;
+    background: transparent;
+    box-shadow: 1px -10px 0 0 var(--nav-card-bg);
+}
+
+.indicator::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right:-22px;
+    top: 50%;
+    border-top-left-radius: 20px;
+    background: transparent;
+    box-shadow: -1px -10px 0 0 var(--nav-card-bg);
+}

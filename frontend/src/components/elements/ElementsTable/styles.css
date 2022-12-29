@@ -1,0 +1,66 @@
+.emplocontrol-table {
+    width: 100%;
+    border-spacing: 0 20px;
+    font-size: 18px;
+}
+
+.emplocontrol-table thead {
+    height: 55px;
+    font-size: 16px;
+    color: var(--table-head-color);
+    font-weight: 700;
+}
+
+.emplocontrol-table tbody {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--table-body-color);
+    text-align: center;
+}
+
+.emplocontrol-table tbody tr {
+    height: 74px;
+    border-top: 1px solid var(table-tr-color);
+}
+
+.emplocontrol-table tbody tr:hover > td {
+    background-color: var(--table-tr-hover);
+}
+
+.emplocontrol-table tbody tr:nth-child(odd) {
+    background-color: var(--table-tr-child);
+}
+
+
+
+.show576 {
+    display: none;
+}
+
+.show992 {
+    display: none;
+}
+
+@media (min-width: 576px) {
+    .show576 {
+        display: table-cell;
+    }
+
+    .emplocontrol-card {
+        padding: 35px;
+    }
+
+    .emplocontrol-licenses-table tbody tr {
+        height: 55px;
+    }
+
+    .emplocontrol-licenses-table tbody {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 992px) {
+    .show992 {
+        display: table-cell;
+    }
+}
