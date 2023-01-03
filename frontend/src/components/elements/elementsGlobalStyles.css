@@ -11,3 +11,9 @@
     flex-direction: row;
     gap: 1.5rem;
 }
+
+.element_div {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.7rem;
+}

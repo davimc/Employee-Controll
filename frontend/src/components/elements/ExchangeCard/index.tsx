@@ -24,18 +24,19 @@ function ExchangeCard() {
     
     const tbHead = new Map<string, number> ([
         ['ID',2],
-        ['Funcionário', 0],
-        ['Data Início',1],
-        ['Data Fim', 2],
-        ['Ativo',1]
+        ['Gerador', 0],
+        ['Trocado', 0],
+        ['Período', 1],
+        ['Loja',2],
+        ['Estado',2]
     ])
 
-    // useEffect(() => {
-    //     const dMin = minDate.toISOString().slice(0,10)
-    //     const dMax = maxDate.toISOString().slice(0,10)
-    //     axios.get(`${BASE_URL}/exchanges?dtMin=${dMin}&dtMax=${dMax}`)
-    //         .then(response => {(setExchanges(response.data.content))})
-    // }), [minDate, maxDate]
+    useEffect(() => {
+        const dMin = minDate.toISOString().slice(0,10)
+        const dMax = maxDate.toISOString().slice(0,10)
+        axios.get(`${BASE_URL}/exchanges?dtMin=${dMin}&dtMax=${dMax}&`)
+            .then(response => {(setExchanges(response.data.content))})
+    }), [minDate, maxDate]
 
     return (
         <>
@@ -68,11 +69,11 @@ function ExchangeCard() {
                 </div>
                 <div className="emplocontrol-form-control-container">
                     <select id='state' value={state} onChange={() => setState} className="emplocontrol-form-control">
-                        <option value='todos'>Todos</option>
-                        <option value="ativo">Ativo</option>
-                        <option value='pendente'>Pendente</option>
-                        <option value='finalizado'>Finalizado</option>
-                        <option value='cancelado'>Canelado</option>
+                        <option value='0' selected>Todos</option>
+                        <option value='1'>Pendente</option>
+                        <option value="2">Ativo</option>
+                        <option value='3'>Concluído</option>
+                        <option value='4'>Canelado</option>
                     </select>
                     </div>
                     
@@ -84,11 +85,16 @@ function ExchangeCard() {
                     return(
                         <tr key={exchange.id}>
                             <td className="show992">{exchange.id}</td>
-                            <td>{exchange.employeeName}</td>
-                            <td className="show576">{new Date(exchange.dtStart).toLocaleDateString()}</td>
-                            <td className="show992">{new Date(exchange.dtEnd == null? 
-                                exchange.dtExpected : 
-                                exchange.dtEnd).toLocaleDateString()}</td>
+
+                            <td className="show576">
+                                <div className="element_div">
+                                    <span>{new Date(exchange.dtStart).toLocaleDateString()}</span>
+                                    <span>{new Date(exchange.dtEnd == null? 
+                                        exchange.dtExpected : 
+                                        exchange.dtEnd).toLocaleDateString()}
+                                    </span>
+                                </div>
+                                </td>
                             <td className="show576">{exchange.dtEnd == null ? "Ativo":"Concluído"}</td>
                             <td>
                                 <div className="emplocontrol-red-btn-container">

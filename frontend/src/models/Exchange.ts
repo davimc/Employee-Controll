@@ -1,9 +1,12 @@
+import { EmployeeShort } from "./Employee"
+
 export type Exchange = {
     id: number,
-    employeeId: number,
-    employeeName: string,
+    generator: EmployeeShort,
+    exchanged: EmployeeShort,
     created: Date,
     dtStart: Date,
     dtExpected: Date,
-    dtEnd: Date
+    dtEnd: Date,
+    state: String
 }

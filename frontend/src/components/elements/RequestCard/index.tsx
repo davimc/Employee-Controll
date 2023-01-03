@@ -22,11 +22,13 @@ function RequestCard() {
     const tbHead = new Map<string, number>([
         ['ID',2],
         ['Funcionário', 0],
+        ['Loja', 2],
         ['Data Início',1],
-        ['Data Fim', 2],
-        ['Ativo',1]
+        ['Data Fim', 1],
+        ['Estado',1]
     ])
-
+    const iterator = tbHead.values()
+    
     useEffect(() => {
         const dMin = minDate.toISOString().slice(0,10)
         const dMax = maxDate.toISOString().slice(0,10)
@@ -57,13 +59,13 @@ function RequestCard() {
                 {requests.map(request => {
                     return(
                         <tr key={request.id}>
-                            <td className="show992">{request.id}</td>
-                            <td>{request.employeeName}</td>
-                            <td className="show576">{new Date(request.dtStart).toLocaleDateString()}</td>
-                            <td className="show992">{new Date(request.dtEnd == null? 
+                            <td className={iterator.next().value}>{request.id}</td>
+                            <td>{request.employee.name}</td>
+                            <td className={iterator.next().value}>{new Date(request.dtStart).toLocaleDateString()}</td>
+                            <td className={iterator.next().value}>{new Date(request.dtEnd == null? 
                                 request.dtExpected : 
                                 request.dtEnd).toLocaleDateString()}</td>
-                            <td className="show576">{request.dtEnd == null ? "Ativo":"Concluído"}</td>
+                            <td className={iterator.next().value}>{request.dtEnd == null ? "Ativo":"Concluído"}</td>
                             <td>
                                 <div className="emplocontrol-red-btn-container">
                                         <ViewButton />
