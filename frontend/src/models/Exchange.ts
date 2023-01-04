@@ -1,3 +1,5 @@
+import { Request } from './Request';
+
 export type Exchange = {
     id: number,
     employeeId: number,
@@ -5,5 +7,6 @@ export type Exchange = {
     created: Date,
     dtStart: Date,
     dtExpected: Date,
-    dtEnd: Date
+    dtEnd: Date,
+    requests: Request[]
 }
