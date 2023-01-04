@@ -47,8 +47,8 @@ function EmployeeCard() {
                         <tr key={employee.id}>
                             <td className="show992">{employee.id}</td>
                             <td>{employee.name}</td>
-                            <td className="show576">{employee.cpf}</td>
-                            <td className="show992">{employee.store}</td>
+                            <td className="show992">{employee.cpf}</td>
+                            <td className="show576">{employee.store}</td>
                             <td className="show576">{employee.state}</td>
                             <td>
                                 <div className="emplocontrol-red-btn-container">
