@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 import { Request } from './Request';
-=======
 import { EmployeeShort } from "./Employee"
->>>>>>> refs/remotes/origin/main
+
 
 export type Exchange = {
     id: number,
@@ -12,9 +10,6 @@ export type Exchange = {
     dtStart: Date,
     dtExpected: Date,
     dtEnd: Date,
-<<<<<<< HEAD
     requests: Request[]
-=======
     state: String
->>>>>>> refs/remotes/origin/main
 }
