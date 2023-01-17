@@ -5,6 +5,12 @@ export type Store = {
     qttCurrent: number,
     qttBeloging: number
 }
+
+export type StoreShort = {
+    id: number,
+    name: string
+}
+
 export type StoreType = { 
     cod: number,
     name: string
