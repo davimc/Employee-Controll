@@ -4,9 +4,9 @@ import { EmployeeNew } from "../../../models/Employee"
 import { useForm } from "../useForm"
 import { BASE_URL } from "../../../utils/request"
 
-function EmployeeForm(props?: EmployeeNew) {
+function EmployeeForm() {
     const initialState = {
-        employee: props
+        
     }
 
     const {onChange, onSubmit, values } = useForm(
@@ -15,13 +15,14 @@ function EmployeeForm(props?: EmployeeNew) {
     )
 
     async function employeeNewCallback() {
-        await axios.post(`${BASE_URL}/employees`, {
-            values
-        }).then(response => {
-            return response
-        }).catch(error => {
-            return error
-        })//TODO 
+        // await axios.post(`${BASE_URL}/employees`, {
+        //     values
+        // }).then(response => {
+        //     return response
+        // }).catch(error => {
+        //     return error
+        // })//TODO 
+        console.log
     }
 
     return (

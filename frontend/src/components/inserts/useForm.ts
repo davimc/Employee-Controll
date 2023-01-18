@@ -1,4 +1,5 @@
 import { Component, useState } from "react";
+import { EmployeeNew } from "../../models/Employee";
 
 export const useForm = (callback: any, initialState = {}) =>{
     const [values, setValues] = useState(initialState)
