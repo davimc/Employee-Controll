@@ -1,7 +1,7 @@
 import Header from './components/Header'
 import './App.css'
 import CardViewer from './components/CardViewer'
-import EmployeeForm from './components/inserts/EmployeeForm'
+// import EmployeeForm from './components/inserts/EmployeeForm'
 import { EmployeeNew } from './models/Employee'
 
 function App() {
@@ -9,8 +9,8 @@ function App() {
     <div className="App">
       <Header/>
       <div className=' emplocontrol-container'>
-        {/* <CardViewer/> */}
-        <EmployeeForm/>
+         <CardViewer/> 
+        {/*<EmployeeForm/>*/}
       </div>
     </div>
   )
