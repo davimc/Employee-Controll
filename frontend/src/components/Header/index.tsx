@@ -10,7 +10,7 @@ function Header() {
                 <h1>EmploControl</h1>
                 <p>
                 Desenvolvido por
-                <a href="https://www.instagram.com/davi_ban.ig"> @davi_ban.ig</a>
+                <a href="https://www.linkedin.com/in/davi-matos-carvalho/"> @davi-In</a>
                 </p>
             </div>
     </header>
