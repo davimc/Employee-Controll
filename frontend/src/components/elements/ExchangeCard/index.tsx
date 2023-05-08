@@ -23,12 +23,12 @@ function ExchangeCard() {
     const [exchanges, setExchanges] = useState<Exchange[]>([])
     
     const tbHead = new Map<string, number> ([
-        ['ID',2],
-        ['Gerador', 0],
-        ['Trocado', 0],
+        ['ID',0],
+        ['Gerador', 1],
+        ['Trocado', 2],
         ['Período', 1],
         ['Loja',2],
-        ['Estado',2]
+        ['Estado',1]
     ])
 
     useEffect(() => {
@@ -84,8 +84,9 @@ function ExchangeCard() {
                 {exchanges.map(exchange => {
                     return(
                         <tr key={exchange.id}>
-                            <td className="show992">{exchange.id}</td>
-
+                            <td>{exchange.id}</td>
+                            <td className="show576">{exchange.generator.name}</td>
+                            <td className="show992">{exchange.exchanged.name}</td>
                             <td className="show576">
                                 <div className="element_div">
                                     <span>{new Date(exchange.dtStart).toLocaleDateString()}</span>
@@ -95,8 +96,9 @@ function ExchangeCard() {
                                     </span>
                                 </div>
                                 </td>
+                            <td className="show992">{exchange.generator.store}</td>
                             <td className="show576">{exchange.dtEnd == null ? "Ativo":"Concluído"}</td>
-                            <td>
+1                            <td>
                                 <div className="emplocontrol-red-btn-container">
                                         <ViewButton />
                                 </div>
