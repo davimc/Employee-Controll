@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { HiOutlineBuildingStorefront, BsPerson, TbLicense, RiExchangeLine, FaRegHandshake } from 'react-icons/all'
 import { Link } from 'react-router-dom'
+import { BASE_URL } from '../../utils/request'
 
 import './styles.css'
 
@@ -23,7 +24,10 @@ function CardNav() {
         <ul>
             {Array.from(icons).map(([key,val]) => {
                 return(
-                <li className={classActive == key? 'list active': 'list'} id={key} key = {key} onClick={() => setClassActive(key)}>
+                <li className={classActive == key? 'list active': 'list'} id={key} key = {key} onClick={() => {
+                    {console.log(BASE_URL)}
+                    setClassActive(key)}
+                    }>
                     <Link to={val[2]} >
                         <span className="icon" >
                             {val[0]}
