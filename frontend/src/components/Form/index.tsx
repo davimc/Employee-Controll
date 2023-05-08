@@ -1,8 +1,9 @@
 import React from 'react'
 import {useField} from '@unform/core'
 
-export default function Form() { 
+function Form() { 
     return (
         <div/>
     )
 }
+export default Form
