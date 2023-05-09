@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import ViewButton from "../../ViewButton";
@@ -22,61 +22,63 @@ function RequestCard() {
     const tbHead = new Map<string, number>([
         ['ID',2],
         ['Funcionário', 0],
-        ['Loja', 2],
         ['Data Início',1],
         ['Data Fim', 1],
         ['Estado',1]
     ])
-    const iterator = tbHead.values()
     
-    useEffect(() => {
+    const memo = useMemo(() => {
         const dMin = minDate.toISOString().slice(0,10)
         const dMax = maxDate.toISOString().slice(0,10)
-        axios.get(`${BASE_URL}/requests}`)
-            .then(response => {(setRequests(response.data.content))})
-    }), [minDate, maxDate]
+        axios.get(`${BASE_URL}/requests`)
+            .then(response => {
+                (setRequests(response.data))
+            })
+    }, [minDate, maxDate])
 
     return (
-        <>
-        <Head title='Licenças'>
+        <Head title='Pedidos'>
+        <div className="col-container">
+            <div className="emplocontrol-form-control-container">
+                <DatePicker
+                    selected={minDate}
+                    onChange={(date: Date) => {setMinDate(date)}}
+                    className="emplocontrol-form-control"
+                    dateFormat="dd/MM/yyyy"
+                />
+            </div>
         <div className="emplocontrol-form-control-container">
-        <DatePicker
-            selected={minDate}
-            onChange={(date: Date) => {setMinDate(date)}}
-            className="emplocontrol-form-control"
-            dateFormat="dd/MM/yyyy"
-/>
+            <DatePicker
+                selected={maxDate}
+                onChange={(date: Date) => {setMaxDate(date)}}
+                className="emplocontrol-form-control"
+                dateFormat="dd/MM/yyyy"
+            />
         </div>
-        <div className="emplocontrol-form-control-container">
-        <DatePicker
-            selected={maxDate}
-            onChange={(date: Date) => {setMaxDate(date)}}
-            className="emplocontrol-form-control"
-            dateFormat="dd/MM/yyyy"
-/>
-        </div>
-        <Table tbHead={tbHead}>        
-                {requests.map(request => {
-                    return(
-                        <tr key={request.id}>
-                            <td className={iterator.next().value}>{request.id}</td>
-                            <td>{request.employee.name}</td>
-                            <td className={iterator.next().value}>{new Date(request.dtStart).toLocaleDateString()}</td>
-                            <td className={iterator.next().value}>{new Date(request.dtEnd == null? 
-                                request.dtExpected : 
-                                request.dtEnd).toLocaleDateString()}</td>
-                            <td className={iterator.next().value}>{request.dtEnd == null ? "Ativo":"Concluído"}</td>
-                            <td>
-                                <div className="emplocontrol-red-btn-container">
-                                        <ViewButton />
-                                </div>
-                            </td>
-                        </tr>  
+</div>
+<Table tbHead={tbHead}>   
+            {requests.map(request => {
+                console.log(request)
+                return(
+                    <tr key={request.id}>
+                        <td className='show996'>{request.id}</td>
+                        <td>{request.employee}</td>
+                        <td>{new Date(request.dtStart).toLocaleDateString()}</td>
+                        <td>{new Date(request.dtEnd == null? 
+                            request.dtExpected : 
+                            request.dtEnd).toLocaleDateString()}</td>
+                        <td>{request.state}</td>
+                        <td>
+                            <div className="emplocontrol-red-btn-container">
+                                    <ViewButton />
+                            </div>
+                        </td>
+                    </tr>  
                 )
-                })}
+            })}
         </Table>
+        
     </Head>
-    </>
     )
 }
 
