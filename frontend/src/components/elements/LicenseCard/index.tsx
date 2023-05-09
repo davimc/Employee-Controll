@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useEffect, useState } from "react";
+import {useMemo, useState } from "react";
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import ViewButton from "../../ViewButton";
@@ -24,15 +24,15 @@ function LicenseCard() {
         ['Funcionário', 0],
         ['Data Início',1],
         ['Data Fim', 2],
+        ['Motivo',0],
         ['Ativo',1]
     ])
-
-    useEffect(() => {
-        const dMin = minDate.toISOString().slice(0,10)
-        const dMax = maxDate.toISOString().slice(0,10)
+    const dMin = minDate.toISOString().slice(0,10)
+    const dMax = maxDate.toISOString().slice(0,10)
+    const memo = useMemo(() => {
         axios.get(`${BASE_URL}/licenses?dtMin=${dMin}&dtMax=${dMax}`)
             .then(response => {(setLicenses(response.data.content))})
-    }), [minDate, maxDate]
+    }, [minDate, maxDate])
 
     return ( 
         <Head title='Licenças'>
@@ -65,6 +65,7 @@ function LicenseCard() {
                             <td className="show992">{new Date(license.dtEnd == null? 
                                 license.dtExpected : 
                                 license.dtEnd).toLocaleDateString()}</td>
+                            <td className='show576'>{license.reason}</td>
                             <td className="show576">{license.dtEnd == null ? "Ativo":"Concluído"}</td>
                             <td>
                                 <div className="emplocontrol-red-btn-container">

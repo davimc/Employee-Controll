@@ -5,5 +5,6 @@ export type License = {
     created: Date,
     dtStart: Date,
     dtExpected: Date,
-    dtEnd: Date
+    dtEnd: Date,
+    reason: String
 }

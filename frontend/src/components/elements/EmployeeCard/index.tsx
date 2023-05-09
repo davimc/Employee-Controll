@@ -23,7 +23,7 @@ function EmployeeCard() {
     ])
     const memo = useMemo(() =>{
         axios.get(`${BASE_URL}/employees`)
-             .then(response => {(console.log(response.data),setEmployees(response.data.content))})
+             .then(response => {(setEmployees(response.data.content))})
         },[search])
 
     return (

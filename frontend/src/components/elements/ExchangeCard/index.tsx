@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import ViewButton from "../../ViewButton";
@@ -9,6 +9,7 @@ import Head from '../ElementsHead'
 import Table from '../ElementsTable'
 
 import '../elementsGlobalStyles.css'
+import Select from 'react-select';
 
 function ExchangeCard() {
 
@@ -16,27 +17,32 @@ function ExchangeCard() {
     const max = new Date()
 
     const [search, setSearch] = useState('')
-    const [state, setState] = useState('pendete');
+    const [state, setState] = useState(0);
     const [minDate, setMinDate] = useState(min)
     const [maxDate, setMaxDate] = useState(max) 
-
+    const options = [
+        {value:0, label: 'Todos'},
+        { value:1, label:'Pendente'},
+        { value:2, label:'Ativo'},
+        { value:3, label:'Concluído'},
+        { value:4, label:'Canelado'}
+    ]
     const [exchanges, setExchanges] = useState<Exchange[]>([])
     
     const tbHead = new Map<string, number> ([
-        ['ID',0],
-        ['Gerador', 1],
+        ['ID',2],
+        ['Gerador', 0],
         ['Trocado', 2],
         ['Período', 1],
-        ['Loja',2],
-        ['Estado',1]
+        ['Estado',0]
     ])
-
-    useEffect(() => {
-        const dMin = minDate.toISOString().slice(0,10)
-        const dMax = maxDate.toISOString().slice(0,10)
+    const dMin = minDate.toISOString().slice(0,10)
+    const dMax = maxDate.toISOString().slice(0,10)
+    const memo = useMemo(() => {
+       
         axios.get(`${BASE_URL}/exchanges?dtMin=${dMin}&dtMax=${dMax}&`)
             .then(response => {(setExchanges(response.data.content))})
-    }), [minDate, maxDate]
+    }, [search])
 
     return (
         <>
@@ -68,13 +74,13 @@ function ExchangeCard() {
                     />
                 </div>
                 <div className="emplocontrol-form-control-container">
-                    <select id='state' value={state} onChange={() => setState} className="emplocontrol-form-control">
-                        <option value='0' selected>Todos</option>
-                        <option value='1'>Pendente</option>
-                        <option value="2">Ativo</option>
-                        <option value='3'>Concluído</option>
-                        <option value='4'>Canelado</option>
-                    </select>
+                    <Select id='state' 
+                    options={options}
+                    defaultValue={options[0]} 
+                    onChange={(e) => setState(e!.value)} 
+                    className="emplocontrol-form-control"
+                    />
+                        
                     </div>
                     
                 </div>
@@ -84,9 +90,10 @@ function ExchangeCard() {
                 {exchanges.map(exchange => {
                     return(
                         <tr key={exchange.id}>
-                            <td>{exchange.id}</td>
-                            <td className="show576">{exchange.generator.name}</td>
-                            <td className="show992">{exchange.exchanged.name}</td>
+                            <td className="show992">{exchange.id}</td>
+                            <td className="show992">{exchange.employeeGenerator}</td>
+                            <td className="show992">{exchange.employeeExchanged != null? exchange.employeeExchanged:'-'}</td>
+
                             <td className="show576">
                                 <div className="element_div">
                                     <span>{new Date(exchange.dtStart).toLocaleDateString()}</span>
@@ -96,14 +103,14 @@ function ExchangeCard() {
                                     </span>
                                 </div>
                                 </td>
-                            <td className="show992">{exchange.generator.store}</td>
                             <td className="show576">{exchange.dtEnd == null ? "Ativo":"Concluído"}</td>
-1                            <td>
+                            <td>
                                 <div className="emplocontrol-red-btn-container">
                                         <ViewButton />
                                 </div>
                             </td>
                         </tr>  
+
                 )
                 })}
 

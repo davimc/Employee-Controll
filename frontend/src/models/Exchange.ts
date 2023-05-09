@@ -1,11 +1,10 @@
 import { Request } from './Request';
-import { EmployeeShort } from "./Employee"
 
 
 export type Exchange = {
     id: number,
-    generator: EmployeeShort,
-    exchanged: EmployeeShort,
+    employeeGenerator: String,
+    employeeExchanged: String,
     created: Date,
     dtStart: Date,
     dtExpected: Date,
